@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the Collector model
+model Collector {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  phone     String?
+
+  routes    CollectedRoute[]
+
+  @@map("collectors")
+}
+
+// Define the Route model
+model CollectedRoute {
+  id            Int       @id @default(autoincrement())
+  collectorId   Int
+  name          String
+  company       String
+  address       String
+  phone         String
+  material      String
+  collectionAt  DateTime
+  latitude      Float
+  longitude     Float
+
+  collector     Collector @relation(fields: [collectorId], references: [id])
+
+  @@map("collected_routes")
+}
