@@ -1,9 +1,10 @@
 'use server'
 
 import { usePrisma } from '@/domain/prisma/hooks'
-import type { CollectedRoute } from '@/domain/prisma/types'
 
-export async function getCollectedRoutes(): Promise<CollectedRoute[]> {
+export const getCollectedRoutes = async () => {
   const { collectedRoute } = usePrisma()
-  return await collectedRoute.findMany() as CollectedRoute[]
+  return await collectedRoute.findMany({
+    include: { collector: true },
+  })
 }

@@ -1,14 +1,7 @@
+import type { CollectedRoute } from '@/domain/prisma'
 import type { MapProps as GMapProps } from '@vis.gl/react-google-maps'
 
-export interface MapMarker {
-  id: number
-  name: string
-  company: string
-  address: string
-  phone: string
-  collectionAt: Date | string
-  latitude: number
-  longitude: number
+export interface MapMarker extends CollectedRoute {
 }
 
 export interface MapProps extends GMapProps {

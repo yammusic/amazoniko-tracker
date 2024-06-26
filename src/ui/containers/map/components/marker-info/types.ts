@@ -8,6 +8,8 @@ export interface MarkerInfoType {
 }
 
 export interface MarkerInfoProps extends MarkerInfoType {
-  onClick?: (marker: MarkerInfoType) => void
+  color?: 'red' | 'green' | 'orange'
+  onClick?: () => void
   onClose?: () => void
+  selected?: boolean
 }

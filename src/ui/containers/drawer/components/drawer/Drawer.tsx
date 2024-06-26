@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Collapse } from '@material-tailwind/react'
+import { useSearchParams } from 'next/navigation'
+import { Chip, Collapse } from '@material-tailwind/react'
 import { IoClose } from 'react-icons/io5'
 
 import {
@@ -23,6 +24,16 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
   const [open, setOpen] = useState(true)
   const [selected, setSelected] = useState<Collector | null>(null)
 
+  const searchParams = useSearchParams()
+  const collectorId = Number(searchParams.get('collector'))
+  const routeId = Number(searchParams.get('route'))
+
+  useEffect(() => {
+    if (!collectorId) return
+    const selected = items.find(item => item.id === collectorId)
+    setSelected(selected || null)
+  }, [])
+
   // const onToggleDrawer = () => setOpen(isOpen => !isOpen)
   const onCloseDrawer = () => setOpen(false)
 
@@ -30,8 +41,6 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
     setSelected(item)
 
   }
-
-  console.info({ selected })
   // console.info({ sm: useMediaQuery('sm'), md: useMediaQuery('md'), lg: useMediaQuery('lg'), xl: useMediaQuery('xl') })
 
   return (
@@ -53,7 +62,7 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
           </IconButton>
         </div>
 
-        <Typography className="mb-2 pr-4" color="gray">
+        <Typography className="mb-2" color="gray">
           Collectors
         </Typography>
 
@@ -76,11 +85,38 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
                     </Typography>
 
                     <List className="pr-0">
-                      { item.routes?.map((route) => (
-                        <ListItem key={ route.id }>
-                          { route.name }
-                        </ListItem>
-                      )) }
+                      { item.routes?.map((route) => {
+                        const isCollected = route.collectionAt <= new Date()
+                        const isSelected = routeId === route.id
+
+                        const getUrl = () => {
+                          const params = new URLSearchParams(searchParams.toString())
+                          params.set('route', `${route.id}`)
+                          return `?${params.toString()}`
+                        }
+
+                        return (
+                          <Link href={ `${getUrl()}` } key={ route.company }>
+                            <ListItem className="flex items-center justify-between gap-2" selected={ isSelected }>
+                              <Typography className="text-base truncate" color="blue-gray">
+                                { route.company }
+
+                                <Typography className="text-xs" color="gray" variant="small">
+                                  { route.collectionAt.toLocaleString() }
+                                </Typography>
+                              </Typography>
+
+                              <Chip
+                                className="rounded-full text-xs capitalize"
+                                color={ isCollected ? 'green' : 'orange' }
+                                size="sm"
+                                value={ isCollected ? 'Collected' : 'Pending' }
+                                variant={ isCollected ? 'gradient' : 'outlined' }
+                              />
+                            </ListItem>
+                          </Link>
+                        )
+                      }) }
                     </List>
                   </div>
                 </Collapse>
