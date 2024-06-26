@@ -23,7 +23,7 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
   const [open, setOpen] = useState(true)
   const [selected, setSelected] = useState<Collector | null>(null)
 
-  const onToggleDrawer = () => setOpen(isOpen => !isOpen)
+  // const onToggleDrawer = () => setOpen(isOpen => !isOpen)
   const onCloseDrawer = () => setOpen(false)
 
   const onSelectItem = (item: Collector) => {
