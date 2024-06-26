@@ -1,7 +1,7 @@
 import React from 'react'
 import { TbMap2 } from 'react-icons/tb'
 import { Typography } from '@/app/components/common'
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 
 export function MapSectionSkeleton() {
   return (
