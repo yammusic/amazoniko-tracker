@@ -16,8 +16,8 @@ export function Map(props: Readonly<MapProps>) {
   return (
     <APIProvider apiKey={ apiKey }>
       <GMap
+        className="h-full w-full"
         gestureHandling={ 'greedy' }
-        style={ { width: '100vw', height: '100vh' } }
         { ...rest }
       >
         { markers.map((marker) => {

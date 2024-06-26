@@ -5,6 +5,7 @@ import { ThemeProvider } from '@material-tailwind/react'
 import { Roboto } from 'next/font/google'
 
 import type { AppLayoutProps } from './types'
+import styles from './styles.module.scss'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -20,9 +21,9 @@ export function AppLayout({ children }: Readonly<AppLayoutProps>) {
         className={ `${roboto.className}` }
       >
         <ThemeProvider>
-          <div className="min-h-screen">
+          <main className={ styles.main }>
             { children }
-          </div>
+          </main>
         </ThemeProvider>
       </body>
     </html>

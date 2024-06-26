@@ -2,13 +2,13 @@ import React from 'react'
 
 import { getCollectors } from '@/domain/actions/collectors'
 import { DrawerContainer } from './components'
-// import styles from './styles.module.css'
+import styles from './styles.module.scss'
 
 export async function DrawerSection() {
   const collectors = await getCollectors()
 
   return (
-    <section id="drawer">
+    <section className={ styles.container } id="drawer">
       <DrawerContainer items={ collectors } />
     </section>
   )
