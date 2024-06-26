@@ -1,0 +1,57 @@
+$drawerWidth: 300px;
+
+.container {
+  @apply
+    flex
+    flex-col
+    w-[#{$drawerWidth}]
+    min-h-screen
+    box-border;
+}
+
+// Skeleton styles
+.skeletonContainer {
+  @apply
+    p-4
+    flex
+    flex-col
+    min-w-[#{$drawerWidth}]
+    min-h-screen
+    bg-gray-100
+    box-border
+    animate-pulse;
+}
+
+.skeletonTitle {
+  @apply
+    flex
+    items-center
+    w-[80%]
+    h-6
+    bg-gray-300
+    rounded-full
+    mb-12;
+}
+
+.skeletonSubtitle {
+  @apply
+    flex
+    items-center
+    w-[40%]
+    h-4
+    bg-gray-300
+    rounded-full
+    mb-4;
+}
+
+.skeletonListItem {
+  @apply
+    flex
+    items-center
+    w-full
+    h-10
+    bg-gray-300
+    rounded-full
+    mb-2
+    gap-2;
+}

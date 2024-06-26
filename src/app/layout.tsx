@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
-import '@/app/styles/globals.css'
+import '@/app/styles/globals.scss'
 
 import { AppLayout } from '@/app/layouts/app'
 import { APP_DESCRIPTION, APP_TITLE } from '@/domain/constants/app'
