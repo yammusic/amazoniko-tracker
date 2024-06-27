@@ -21,6 +21,7 @@ import { useMediaQuery } from '@/domain/hooks/useMediaQuery'
 
 import type { Collector } from '@/domain/prisma/types'
 import type { DrawerContainerProps } from './types'
+import styles from './styles.module.scss'
 
 export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
   const { items = [] } = props
@@ -58,24 +59,24 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
 
   return (
     <div className={ `${isSm ? 'w-[0px]' : ''}` }>
-      <IconButton className="absolute left-4 top-4 z-10 sm:block md:hidden bg-white" onClick={ onToggleDrawer }>
+      <IconButton className={ styles.menuButton } onClick={ onToggleDrawer }>
         <LuMenu color="black" size={ 20 } />
       </IconButton>
 
       <Drawer
-        className="p-4"
+        className={ styles.drawer }
         dismiss={ { enabled: false } }
         onClose={ onCloseDrawer }
         open={ open }
         overlay={ false }
       >
-        <div className="mb-6 flex items-center justify-between">
+        <div className={ styles.titleContainer }>
           <Typography color="blue-gray" variant="h5">
             { APP_TITLE }
           </Typography>
 
           <IconButton
-            className="sm:block md:hidden"
+            className={ styles.closeButton }
             color="blue-gray"
             onClick={ onCloseDrawer }
             variant="text"
@@ -84,11 +85,11 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
           </IconButton>
         </div>
 
-        <Typography className="mb-2" color="gray">
+        <Typography className={ styles.titleCollectors } color="gray">
           Collectors
         </Typography>
 
-        <List className="p-0">
+        <List className={ styles.listCollectors }>
           { items.map((item) => {
             const isSelected = item.name === selected?.name
 
@@ -110,12 +111,12 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
                 </Link>
 
                 <Collapse open={ isSelected }>
-                  <div className="mb-2 ml-2">
-                    <Typography className="mt-3" color="gray" variant="small">
+                  <div className={ styles.routesContainer }>
+                    <Typography className={ styles.titleRoutes } color="gray" variant="small">
                       Collection routes
                     </Typography>
 
-                    <List className="pr-0">
+                    <List className={ styles.listRoutes }>
                       { item.routes?.map((route) => {
                         const isCollected = route.collectionAt <= new Date()
                         const isSelected = routeId === route.id
@@ -128,17 +129,21 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
 
                         return (
                           <Link href={ `${getUrl()}` } key={ route.company }>
-                            <ListItem className="flex items-center justify-between gap-2" onClick={ onSelectRoute } selected={ isSelected }>
-                              <Typography className="text-base truncate" color="blue-gray">
+                            <ListItem
+                              className={ styles.itemRoutes }
+                              onClick={ onSelectRoute }
+                              selected={ isSelected }
+                            >
+                              <Typography className={ styles.itemText } color="blue-gray">
                                 { route.company }
 
-                                <Typography className="text-xs" color="gray" variant="small">
+                                <Typography className={ styles.itemTextXs } color="gray" variant="small">
                                   { route.collectionAt.toLocaleString() }
                                 </Typography>
                               </Typography>
 
                               <Chip
-                                className="rounded-full text-xs capitalize"
+                                className={ styles.itemChip }
                                 color={ isCollected ? 'green' : 'orange' }
                                 size="sm"
                                 value={ isCollected ? 'Collected' : 'Pending' }
