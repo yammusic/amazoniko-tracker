@@ -48,9 +48,6 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
 
   const onSelectItem = (item: Collector) => {
     setSelected(item)
-    if (isSm) {
-      onCloseDrawer()
-    }
   }
 
   const onSelectRoute = () => {
@@ -61,8 +58,8 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
 
   return (
     <div>
-      <IconButton className="absolute left-4 top-4 z-10 sm:block md:hidden" onClick={ onToggleDrawer }>
-        <LuMenu size={ 20 } />
+      <IconButton className="absolute left-4 top-4 z-10 sm:block md:hidden bg-white" onClick={ onToggleDrawer }>
+        <LuMenu color="black" size={ 20 } />
       </IconButton>
 
       <Drawer
