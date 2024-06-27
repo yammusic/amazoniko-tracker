@@ -32,19 +32,18 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
     if (!collectorId) return
     const selected = items.find(item => item.id === collectorId)
     setSelected(selected || null)
-  }, [])
+  }, [collectorId])
 
   // const onToggleDrawer = () => setOpen(isOpen => !isOpen)
   const onCloseDrawer = () => setOpen(false)
 
   const onSelectItem = (item: Collector) => {
     setSelected(item)
-
   }
   // console.info({ sm: useMediaQuery('sm'), md: useMediaQuery('md'), lg: useMediaQuery('lg'), xl: useMediaQuery('xl') })
 
   return (
-    <div className="ml-[467px]">
+    <div>
       <Drawer
         className="p-4"
         dismiss={ { enabled: false } }

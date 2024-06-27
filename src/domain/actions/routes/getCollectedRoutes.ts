@@ -4,7 +4,7 @@ import { usePrisma } from '@/domain/prisma/hooks'
 
 export const getCollectedRoutes = async () => {
   const { collectedRoute } = usePrisma()
-  return await collectedRoute.findMany({
+  return collectedRoute.findMany({
     include: { collector: true },
   })
 }

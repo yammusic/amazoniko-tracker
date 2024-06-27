@@ -14,6 +14,7 @@ export async function MapSection() {
       <Map
         disableDefaultUI
         apiKey={ GOOGLE_MAPS_API_KEY }
+        clickableIcons={ false }
         defaultCenter={ { lat: 4.656722, lng: -74.096369 } }
         defaultZoom={ 12 }
         mapId={ GOOGLE_MAPS_MAP_ID }
