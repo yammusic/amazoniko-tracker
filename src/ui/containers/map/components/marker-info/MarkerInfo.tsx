@@ -8,6 +8,7 @@ import {
   Pin,
   useAdvancedMarkerRef,
 } from '@vis.gl/react-google-maps'
+import { IoClose } from 'react-icons/io5'
 
 import type { MarkerInfoProps } from './types'
 import {
@@ -17,8 +18,9 @@ import {
   IconButton,
   Typography,
 } from '@/app/components/common'
-import { IoClose } from 'react-icons/io5'
 import { CollectorInfo } from '../collector-info'
+
+import styles from './styles.module.scss'
 
 export function MarkerInfo(props: Readonly<MarkerInfoProps>) {
   const {
@@ -67,12 +69,12 @@ export function MarkerInfo(props: Readonly<MarkerInfoProps>) {
           anchor={ marker }
           onClose={ onClose }
         >
-          <Card className="min-w-[320px] max-w-[380px] p-0" color="transparent" shadow={ false }>
-            <CardBody className="p-0">
-              <div className="flex items-center justify-between mb-2">
+          <Card className={ styles.card } color="transparent" shadow={ false }>
+            <CardBody className={ styles.cardBody }>
+              <div className={ styles.cardHeaderContainer }>
                 <Typography
                   as="h5"
-                  className="px-2"
+                  className={ styles.headerCompany }
                   variant="lead"
                 >
                   { info.company }
@@ -83,59 +85,52 @@ export function MarkerInfo(props: Readonly<MarkerInfoProps>) {
                 </IconButton>
               </div>
 
-              <div className="flex flex-col px-2">
-                <Typography className="flex gap-2">
+              <div className={ styles.cardInfoContainer }>
+                <Typography className={ styles.infoText }>
                   <strong>Client: </strong>
 
                   { info.name }
                 </Typography>
 
 
-                <Typography className="flex gap-2">
+                <Typography className={ styles.infoText }>
                   <strong>Address: </strong>
 
                   { info.address }
                 </Typography>
 
-                <Typography className="flex gap-2">
+                <Typography className={ styles.infoText }>
                   <strong>Phone: </strong>
 
-                  <a
-                    className="hover:underline"
-                    href={ `tel:${ info.phone }` }
-                    style={ { color: 'var(--blue-500)' } }
-                  >
+                  <a className={ styles.infoLink } href={ `tel:${ info.phone }` }>
                     { info.phone }
                   </a>
                 </Typography>
 
-                <Typography className="flex gap-2">
+                <Typography className={ styles.infoText }>
                   <strong>Material: </strong>
 
                   { info.material }
                 </Typography>
 
-                <Typography className="flex gap-2">
+                <Typography className={ styles.infoText }>
                   <strong>Collection Date: </strong>
 
                   { info.collectionAt.toLocaleString() }
                 </Typography>
 
-                <div className="relative">
-                  <Typography className="flex gap-2">
-                    <strong>Collector: </strong>
+                <Typography className={ styles.infoText }>
+                  <strong>Collector: </strong>
 
-                    <CollectorInfo info={ info.collector! } />
-                  </Typography>
-
-                </div>
+                  <CollectorInfo info={ info.collector! } />
+                </Typography>
               </div>
             </CardBody>
 
             <CardFooter className="p-2">
               <div className="flex">
                 <Chip
-                  className="w-auto capitalize rounded-full"
+                  className={ styles.chip }
                   color={ isCollected ? 'green' : 'orange' }
                   size="sm"
                   value={ isCollected ? 'Collected' : 'Pending' }

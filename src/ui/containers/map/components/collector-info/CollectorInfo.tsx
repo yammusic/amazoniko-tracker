@@ -10,6 +10,8 @@ import {
 } from '@/app/components/common'
 import type { CollectorInfoProps } from './types'
 
+import styles from './styles.module.scss'
+
 export function CollectorInfo(props: Readonly<CollectorInfoProps>) {
   const { info } = props
   const [openPopover, setOpenPopover] = useState(false)
@@ -20,14 +22,14 @@ export function CollectorInfo(props: Readonly<CollectorInfoProps>) {
   }
 
   return (
-    <div className="relative flex">
-      <div>
-        <Typography { ...triggers }>{ info.name }</Typography>
+    <div className={ styles.container }>
+      <div { ...triggers }>
+        <Typography>{ info.name }</Typography>
       </div>
 
-      <Card { ...triggers } className={ `absolute top-[-130px] left-[-70px] ${ openPopover ? 'block' : 'hidden' }` }>
-        <CardBody className="p-4">
-          <div className="mb-2 flex items-center gap-4">
+      <Card { ...triggers } className={ `${styles.card} ${ openPopover ? 'block' : 'hidden' }` }>
+        <CardBody className={ styles.cardBody }>
+          <div className={ styles.cardHeaderContainer }>
             <Avatar
               alt={ info.name }
               size="md"
@@ -36,7 +38,7 @@ export function CollectorInfo(props: Readonly<CollectorInfoProps>) {
             />
 
             <Typography
-              className="font-medium truncate"
+              className={ styles.headerName }
               color="blue-gray"
               variant="lead"
             >
@@ -44,16 +46,16 @@ export function CollectorInfo(props: Readonly<CollectorInfoProps>) {
             </Typography>
           </div>
 
-          <div>
+          <div className={ styles.cardInfoContainer }>
             <Typography
-              className="font-normal flex gap-2 truncate"
+              className={ styles.infoText }
               color="gray"
               variant="small"
             >
               <strong>Email: </strong>
 
               <a
-                className="hover:underline text-blue-500"
+                className={ styles.link }
                 href={ `mailto:${ info.email }` }
                 rel="noreferrer"
                 target="_blank"
@@ -63,17 +65,13 @@ export function CollectorInfo(props: Readonly<CollectorInfoProps>) {
             </Typography>
 
             <Typography
-              className="font-normal flex gap-2 truncate"
+              className={ styles.infoText }
               color="gray"
               variant="small"
             >
               <strong>Phone: </strong>
 
-              <a
-                className="hover:underline text-blue-500"
-                href={ `tel:${ info.phone }` }
-                rel="noreferrer"
-              >
+              <a className={ styles.link } href={ `tel:${ info.phone }` }>
                 { info.phone }
               </a>
             </Typography>

@@ -1,0 +1,55 @@
+$positionTop: -130px;
+$positionLeft: -70px;
+
+.container {
+  @apply
+    relative
+    flex;
+}
+
+.card {
+  @apply
+    absolute
+    top-[#{$positionTop}]
+    left-[#{$positionLeft}];
+}
+
+.cardBody {
+  @apply
+    p-4;
+}
+
+.cardHeaderContainer {
+  @apply
+    mb-2
+    flex
+    items-center
+    gap-4;
+}
+
+.headerName {
+  @apply
+    font-medium
+    truncate;
+}
+
+.cardInfoContainer {
+  @apply
+    flex
+    flex-col;
+}
+
+.infoText {
+  @apply
+    font-normal
+    flex
+    gap-2
+    truncate;
+}
+
+.link {
+  @apply
+    text-blue-500
+    hover:underline
+    cursor-pointer;
+}

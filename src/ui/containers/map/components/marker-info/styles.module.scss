@@ -1,0 +1,54 @@
+$minWidth: 320px;
+$maxWidth: 380px;
+
+.card {
+  @apply
+    min-w-[#{$minWidth}]
+    max-w-[#{$maxWidth}]
+    p-0;
+}
+
+.cardBody {
+  @apply
+    p-0;
+}
+
+.cardHeaderContainer {
+  @apply
+    flex
+    items-center
+    justify-between
+    mb-2;
+}
+
+.headerCompany {
+  @apply
+    px-2;
+}
+
+.cardInfoContainer {
+  @apply
+    flex
+    flex-col
+    px-2;
+}
+
+.infoText {
+  @apply
+    flex
+    gap-2;
+}
+
+.infoLink {
+  @apply
+    text-blue-500
+    hover:underline
+    cursor-pointer;
+}
+
+.chip {
+  @apply
+    w-auto
+    capitalize
+    rounded-full;
+}
