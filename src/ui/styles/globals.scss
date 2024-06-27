@@ -1,6 +1,13 @@
+@use 'colors' as *;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+  @include getColorsVars();
+}
 
 body {
   @apply
