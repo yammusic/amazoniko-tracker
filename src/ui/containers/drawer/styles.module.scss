@@ -4,7 +4,8 @@ $drawerWidth: 300px;
   @apply
     flex
     flex-col
-    w-[#{$drawerWidth}]
+    sm:w-[0px]
+    md:w-[#{$drawerWidth}]
     min-h-screen
     box-border;
 }
@@ -15,7 +16,8 @@ $drawerWidth: 300px;
     p-4
     flex
     flex-col
-    min-w-[#{$drawerWidth}]
+    sm:min-w-[0px]
+    md:min-w-[#{$drawerWidth}]
     min-h-screen
     bg-gray-100
     box-border

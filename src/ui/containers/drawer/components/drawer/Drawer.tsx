@@ -5,23 +5,27 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { Chip, Collapse } from '@material-tailwind/react'
 import { IoClose } from 'react-icons/io5'
+import { LuMenu } from 'react-icons/lu'
 
 import {
+  Avatar,
   IconButton,
   List,
   ListItem,
+  ListItemPrefix,
   Typography,
 } from '@/app/components/common'
 import { Drawer } from '@/app/components/drawer'
 import { APP_TITLE } from '@/domain/constants/app'
-// import { useMediaQuery } from '@/domain/hooks/media-queries'
+import { useMediaQuery } from '@/domain/hooks/useMediaQuery'
 
 import type { Collector } from '@/domain/prisma/types'
 import type { DrawerContainerProps } from './types'
 
 export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
   const { items = [] } = props
-  const [open, setOpen] = useState(true)
+  const isSm = useMediaQuery('sm')
+  const [open, setOpen] = useState(!isSm)
   const [selected, setSelected] = useState<Collector | null>(null)
 
   const searchParams = useSearchParams()
@@ -34,16 +38,33 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
     setSelected(selected || null)
   }, [collectorId])
 
-  // const onToggleDrawer = () => setOpen(isOpen => !isOpen)
+  useEffect(() => {
+    if (isSm) { setOpen(false) }
+    else { setOpen(true) }
+  }, [isSm])
+
+  const onToggleDrawer = () => setOpen(isOpen => !isOpen)
   const onCloseDrawer = () => setOpen(false)
 
   const onSelectItem = (item: Collector) => {
     setSelected(item)
+    if (isSm) {
+      onCloseDrawer()
+    }
   }
-  // console.info({ sm: useMediaQuery('sm'), md: useMediaQuery('md'), lg: useMediaQuery('lg'), xl: useMediaQuery('xl') })
+
+  const onSelectRoute = () => {
+    if (isSm) {
+      onCloseDrawer()
+    }
+  }
 
   return (
     <div>
+      <IconButton className="absolute left-4 top-4 z-10 sm:block md:hidden" onClick={ onToggleDrawer }>
+        <LuMenu size={ 20 } />
+      </IconButton>
+
       <Drawer
         className="p-4"
         dismiss={ { enabled: false } }
@@ -56,7 +77,12 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
             { APP_TITLE }
           </Typography>
 
-          <IconButton color="blue-gray" onClick={ onCloseDrawer } variant="text">
+          <IconButton
+            className="sm:block md:hidden"
+            color="blue-gray"
+            onClick={ onCloseDrawer }
+            variant="text"
+          >
             <IoClose size={ 20 } />
           </IconButton>
         </div>
@@ -73,6 +99,15 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
               <div key={ item.name }>
                 <Link href={ `?collector=${item.id}` }>
                   <ListItem onClick={ () => onSelectItem(item) } selected={ isSelected }>
+                    <ListItemPrefix>
+                      <Avatar
+                        alt={ item.name }
+                        size="sm"
+                        src={ `${item.avatar}` }
+                        variant="circular"
+                      />
+                    </ListItemPrefix>
+
                     { item.name }
                   </ListItem>
                 </Link>
@@ -96,7 +131,7 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
 
                         return (
                           <Link href={ `${getUrl()}` } key={ route.company }>
-                            <ListItem className="flex items-center justify-between gap-2" selected={ isSelected }>
+                            <ListItem className="flex items-center justify-between gap-2" onClick={ onSelectRoute } selected={ isSelected }>
                               <Typography className="text-base truncate" color="blue-gray">
                                 { route.company }
 

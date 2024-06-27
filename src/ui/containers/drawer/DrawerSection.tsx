@@ -13,3 +13,5 @@ export async function DrawerSection() {
     </section>
   )
 }
+
+export default DrawerSection
