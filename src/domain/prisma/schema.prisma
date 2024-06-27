@@ -19,6 +19,7 @@ model Collector {
   name      String
   email     String    @unique
   phone     String?
+  avatar    String?
 
   routes    CollectedRoute[]
 

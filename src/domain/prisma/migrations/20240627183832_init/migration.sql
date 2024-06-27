@@ -4,6 +4,7 @@ CREATE TABLE "collectors" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "phone" TEXT,
+    "avatar" TEXT,
 
     CONSTRAINT "collectors_pkey" PRIMARY KEY ("id")
 );

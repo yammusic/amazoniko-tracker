@@ -13,6 +13,7 @@ export async function seedCollectors() {
         name: `${faker.person.firstName()} ${faker.person.lastName()}`,
         email: faker.internet.email(),
         phone: faker.phone.number(),
+        avatar: faker.image.avatar(),
       })
     }
 
