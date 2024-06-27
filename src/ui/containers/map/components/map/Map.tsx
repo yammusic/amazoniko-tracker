@@ -19,9 +19,13 @@ export function Map(props: Readonly<MapProps>) {
     const params = new URLSearchParams(searchParams.toString())
     params.set('collector', `${item.collectorId}`)
     params.set('route', `${item.id}`)
-
     replace(`?${params.toString()}`)
-    console.info('onMarkerClick', { item, params })
+  }
+
+  const onCloseMarker = () => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete('route')
+    replace(`?${params.toString()}`)
   }
 
   return (
@@ -46,6 +50,7 @@ export function Map(props: Readonly<MapProps>) {
               info={ marker }
               key={ marker.latitude }
               onClick={ () => onClickMarker(marker) }
+              onClose={ onCloseMarker }
               selected={ isSelected }
             />
           )
