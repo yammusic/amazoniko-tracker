@@ -1,3 +1,5 @@
+'use client'
+
 export * from './avatar'
 export * from './button'
 export * from './card'
@@ -7,4 +9,5 @@ export * from './card-header'
 export * from './icon-button'
 export * from './list'
 export * from './list-item'
+export * from './list-item-prefix'
 export * from './typography'
