@@ -1,1 +1,3 @@
-export * from './useMediaQueries'
+'use client'
+
+export * from './useMediaQuery'
