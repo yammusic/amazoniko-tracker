@@ -57,7 +57,7 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
   }
 
   return (
-    <div>
+    <div className={ `${isSm ? 'w-[0px]' : ''}` }>
       <IconButton className="absolute left-4 top-4 z-10 sm:block md:hidden bg-white" onClick={ onToggleDrawer }>
         <LuMenu color="black" size={ 20 } />
       </IconButton>
