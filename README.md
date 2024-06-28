@@ -106,13 +106,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 > npm run start
 > ```
 
-<!-- ## Run the tests
+## Run the tests
 
 To run the tests, run the following command:
 
 ```bash
 npm run test
-``` -->
+```
 
 <!-- ## Limitations and Future Improvements
 

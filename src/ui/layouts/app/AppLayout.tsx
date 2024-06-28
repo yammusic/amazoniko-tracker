@@ -19,6 +19,7 @@ export function AppLayout({ children }: Readonly<AppLayoutProps>) {
       <body
         suppressHydrationWarning
         className={ `${roboto.className}` }
+        data-testid="app-layout-body"
       >
         <ThemeProvider>
           <main className={ styles.main }>
