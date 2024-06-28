@@ -1,4 +1,4 @@
-export * from './createCollectedRoute'
-export * from './deleteCollectedRoute'
-export * from './getCollectedRoutes'
-export * from './updateCollectedRoute'
+export { createCollectedRoute } from './createCollectedRoute'
+export { deleteCollectedRoute } from './deleteCollectedRoute'
+export { getCollectedRoute, getCollectedRoutes } from './getCollectedRoutes'
+export { updateCollectedRoute } from './updateCollectedRoute'
