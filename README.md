@@ -14,7 +14,6 @@ This is a web application developed using Next.js, aimed at managing collectors'
 - App: [https://amazoniko-tracker.vercel.app/](https://amazoniko-tracker.vercel.app/)
 - Api docs: [https://amazoniko-tracker.vercel.app/api-doc](https://api-docs.amazoniko-tracker.vercel.app/api-doc)
 
-
 ## Functionalities
 
 - **Data Listing**: Displays a list of collectors on the main page.
@@ -75,7 +74,6 @@ This codebase follows the Hexa3 architecture, which is a combination of Hexagona
 - [Next Swagger Doc](https://github.com/jellydn/next-swagger-doc)
 - [Faker](https://fakerjs.dev/)
 - [SASS](https://sass-lang.com/)
-- [Testing Library](https://testing-library.com/)
 - [Eslint](https://eslint.org/)
 - [Typescript](https://www.typescriptlang.org/)
 
@@ -108,13 +106,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 > npm run start
 > ```
 
-## Run the tests
+<!-- ## Run the tests
 
 To run the tests, run the following command:
 
 ```bash
 npm run test
-```
+``` -->
 
 <!-- ## Limitations and Future Improvements
 
