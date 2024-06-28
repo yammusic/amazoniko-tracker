@@ -5,6 +5,8 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v3-cyan?logo=Tailwind%20CSS)
 ![Typescript](https://img.shields.io/badge/Typescript-v5-blue?logo=typescript)
 
+![Preview](./public/assets/preview.png)
+
 ## Description
 
 This is a web application developed using Next.js, aimed at managing collectors' data. The application allows users to view a list of collectors, see detailed information about each collector's collected materials, and visualize the collection routes on a map using Google Maps.
