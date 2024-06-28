@@ -21,9 +21,9 @@ export async function seedRoutes() {
           address: faker.location.streetAddress(),
           phone: faker.phone.number(),
           material: `${faker.helpers.arrayElement(materials)}, ${faker.number.int({ min: 100, max: 1000 })} Kg`,
-          collectionAt: isPast ? faker.date.recent() : faker.date.soon(),
-          latitude: faker.location.latitude({ min: 4.4, max: 4.7, precision: 7 }),
-          longitude: -(faker.location.longitude({ min: 74.0, max: 74.2, precision: 7 })),
+          collectionAt: isPast ? faker.date.recent({ days: 2 }) : faker.date.soon({ days: 5 }),
+          latitude: faker.location.latitude({ min: 4.5, max: 4.8, precision: 7 }),
+          longitude: -(faker.location.longitude({ min: 74.1, max: 74.2, precision: 7 })),
         })
       }
     }
