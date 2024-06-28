@@ -8,3 +8,11 @@ export const getCollectedRoutes = async () => {
     include: { collector: true },
   })
 }
+
+export const getCollectedRoute = async (id: number) => {
+  const { collectedRoute } = usePrisma()
+  return collectedRoute.findUnique({
+    where: { id },
+    include: { collector: true },
+  })
+}
