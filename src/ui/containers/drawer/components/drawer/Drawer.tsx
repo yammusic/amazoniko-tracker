@@ -58,7 +58,7 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
   }
 
   return (
-    <div className={ `${isSm ? 'w-[0px]' : ''}` }>
+    <div className={ styles.container }>
       <IconButton className={ styles.menuButton } onClick={ onToggleDrawer }>
         <LuMenu color="black" size={ 20 } />
       </IconButton>
@@ -164,3 +164,5 @@ export function DrawerContainer(props: Readonly<DrawerContainerProps>) {
     </div>
   )
 }
+
+export default DrawerContainer

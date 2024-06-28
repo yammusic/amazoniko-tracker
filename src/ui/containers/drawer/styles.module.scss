@@ -13,7 +13,8 @@ $drawerWidth: 300px;
 // Skeleton styles
 .skeletonContainer {
   @apply
-    p-4
+    sm:p-0
+    md:p-4
     flex
     flex-col
     sm:min-w-[0px]

@@ -1,6 +1,9 @@
+@use '../../styles.module' as *;
+
 .container {
   @apply
     sm:w-[0px];
+    md:w-[#{$drawerWidth}];
 }
 
 .menuButton {
