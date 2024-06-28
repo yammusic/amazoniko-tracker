@@ -76,6 +76,7 @@ This codebase follows the Hexa3 architecture, which is a combination of Hexagona
 - [Next Swagger Doc](https://github.com/jellydn/next-swagger-doc)
 - [Faker](https://fakerjs.dev/)
 - [SASS](https://sass-lang.com/)
+- [Testing Library](https://testing-library.com)
 - [Eslint](https://eslint.org/)
 - [Typescript](https://www.typescriptlang.org/)
 
