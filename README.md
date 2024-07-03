@@ -14,7 +14,7 @@ This is a web application developed using Next.js, aimed at managing collectors'
 ## Demo
 
 - App: [https://amazoniko-tracker.vercel.app/](https://amazoniko-tracker.vercel.app/)
-- Api docs: [https://amazoniko-tracker.vercel.app/api-doc](https://api-docs.amazoniko-tracker.vercel.app/api-doc)
+- Api docs: [https://amazoniko-tracker.vercel.app/api-doc](https://amazoniko-tracker.vercel.app/api-doc)
 
 ## Functionalities
 
